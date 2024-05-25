@@ -1,0 +1,109 @@
+// Config for this example
+
+body {
+    margin: 0;
+    background-color: rgb(70, 70, 206);
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+.main-container {
+    display: flex;
+    height: 100vh;
+    color: white;
+
+    .inner-container {
+        margin: auto;
+    }
+
+    .example-container {
+        display: grid;
+
+        grid-template-columns: auto;
+        row-gap: 0.3rem;
+
+        code {
+            width: 100%;
+            margin-left: auto;
+            color: white;
+            text-align: center;
+            font-size: 2rem;
+        }
+    }
+}
+
+// Config for digit codes
+.nice-digit-code-container-view {
+    $primary-color: lime;
+    $digit-background: rgba(50, 50, 50);
+    $digit-color: white;
+    $digit-color-hover: rgba(80, 80, 80);
+
+    $digit-width: 3.39rem;
+    $digit-padding: 0.39rem;
+    $digit-separator: 0.5rem;
+    $digit-big-separator: (
+        1.25 * $digit-separator
+    );
+$digit-font-size: 3em;
+$digit-background: $digit-background;
+$digit-color: $digit-color;
+$digit-focus-color: $primary-color;
+
+display: grid;
+grid-template-columns: auto;
+
+.digit-code-container {
+    display: grid;
+    row-gap: calc(1.5 * $digit-separator);
+    column-gap: $digit-separator;
+    justify-content: center;
+
+    input {
+        text-align: center;
+
+        width: 1em;
+        padding-top: $digit-padding;
+        padding-bottom: $digit-padding;
+
+        font-size: $digit-font-size;
+        background-color: $digit-background;
+        color: $digit-color;
+        border: none;
+        border-radius: 0.5rem;
+        font-family: monospace;
+    }
+
+    input:focus {
+        outline: 0.2rem solid $primary-color;
+    }
+
+    input:hover {
+        background-color: $digit-color-hover;
+    }
+
+    grid-auto-flow: column;
+    $media-min-width: calc(($digit-width + $digit-separator + $digit-big-separator) * 10);
+    $media-max-width: calc($media-min-width - 0.001em);
+
+    @media only screen and (min-width: $media-min-width) {
+        input:nth-child(3n+0) {
+            margin-right: $digit-big-separator;
+        }
+
+        input:last-child {
+            margin: 0 0 0 0;
+            padding: 0;
+        }
+    }
+
+    @media only screen and (max-width: $media-max-width) {
+        grid-template-columns: auto auto auto;
+        grid-auto-flow: row;
+    }
+
+}
+}

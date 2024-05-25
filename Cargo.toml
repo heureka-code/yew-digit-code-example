@@ -1,0 +1,15 @@
+[package]
+name = "yew-digit-code-example"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+yew-digit-code = { path = "../yew-digit-code", features = [
+    "unicode-segmentation",
+] }
+log = "0.4.12"
+yew = { version = "0.21.0", features = ["csr"] }
+dotenv = "0.15"
+wasm-logger = "0.2"
