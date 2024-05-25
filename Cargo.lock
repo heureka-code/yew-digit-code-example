@@ -1197,6 +1197,7 @@ dependencies = [
 [[package]]
 name = "yew-digit-code"
 version = "0.1.0"
+source = "git+https://github.com/heureka-code/yew-digit-code#e0391780db8ee4a349de2db41da475940fcc5281"
 dependencies = [
  "log",
  "rand",
