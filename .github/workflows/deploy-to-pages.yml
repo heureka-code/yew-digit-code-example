@@ -27,12 +27,14 @@ jobs:
     - name: Setup Rust tools
       run: |
         rustup target add wasm32-unknown-unknown
-        cargo install --locked trunk
     - uses: actions/checkout@v4
+    - uses: Swatinem/rust-cache@v2
+    - name: Install trunk
+      run: cargo install --locked trunk
     - name: Run tests
       run: cargo test --verbose
     - name: Build
-      run: trunk build
+      run: trunk build --release
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
