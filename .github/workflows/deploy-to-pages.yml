@@ -37,13 +37,11 @@ jobs:
           target
         key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
     - name: Install Trunk
-      uses: jetli/trunk-action@v0.4.0
-      with:
-        version: "latest"
+      run: cargo install --locked trunk
     - name: Run tests
       run: cargo test --verbose
     - name: Build
-      run: trunk build --public-url ${{ github.event.repository.name }} --release
+      run: trunk build --public-url "heureka-code.github.io/${{ github.event.repository.name }}" --release
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
