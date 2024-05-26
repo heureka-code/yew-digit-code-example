@@ -43,7 +43,7 @@ jobs:
     - name: Run tests
       run: cargo test --verbose
     - name: Build
-      run: trunk build --public-url "heureka-code.github.io/${{ github.event.repository.name }}" --release
+      run: trunk build --public-url "./" --release
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
