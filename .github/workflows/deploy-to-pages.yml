@@ -28,13 +28,22 @@ jobs:
       run: |
         rustup target add wasm32-unknown-unknown
     - uses: actions/checkout@v4
+      with:
+        path: |
+          ~/.cargo/bin
+          ~/.cargo/git
+          ~/.cargo/registry
+          target
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
     - uses: Swatinem/rust-cache@v2
-    - name: Install trunk
-      run: cargo install --locked trunk
+    - name: Install Trunk
+      uses: jetli/trunk-action@v0.4.0
+      with:
+        version: "latest"
     - name: Run tests
       run: cargo test --verbose
     - name: Build
-      run: trunk build --release
+      run: trunk build --public-url ${{ github.event.repository.name }} --release
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
